@@ -1,6 +1,6 @@
 "use client";
-import {use} from 'react';
-import { useEffect, useRef, useState } from "react";
+
+import { use, useEffect, useRef, useState } from "react";
 import { useChatMessages } from "@/hooks/useChatMessages";
 import ChatInput from "@/components/ChatInput";
 import ChatMessage from "@/components/ChatMessage";
@@ -9,17 +9,14 @@ import ChatSkeleton from "@/components/ChatSkeleton";
 import { FC } from 'react';
 
 type PageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-export default function ChatPage({ params }: PageProps)  {
-  console.log(params,"params")
-  const { id } = use(params); // ✅ Correct way in new versions
-  console.log(id)
-
-
+export default  function ChatPage({ params }: PageProps)  {
+  const {id} = use(params)
+  //console.log(params.id,"params")
   const {
     messages,
     sendMessage,

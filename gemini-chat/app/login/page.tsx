@@ -25,9 +25,8 @@ const LoginPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const [countries, setCountries] = useState<{ name: string; code: string }[]>(
-    []
-  );
+  const [countries, setCountries] = useState<{ name: string; code: string | null }[]>([]);
+
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
   const [simOtp, setSimOtp] = useState("");
@@ -68,9 +67,10 @@ const LoginPage = () => {
             >
               <option value="">Select Country</option>
               {countries.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {c.name}({c.code})
-                </option>
+                <option key={c.code ?? c.name} value={c.code ?? ""}>
+                {c.name} ({c.code ?? "N/A"})
+              </option>
+              
               ))}
             </select>
             {errors.countryCode && (
