@@ -6,6 +6,7 @@ export const fetchCountries = async () => {
   );
 
   return response.data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .map((country: any) => {
       const root = country.idd?.root;
       const suffix = country.idd?.suffixes?.[0];
