@@ -22,7 +22,7 @@ This is a fully functional, responsive frontend for a Gemini-style conversationa
 - **Auto-Scroll**: Scrolls to the latest message on new messages.
 - **Reverse Infinite Scroll**: Loads older messages with client-side pagination (20 messages per page) using dummy data.
 - **Copy-to-Clipboard**: Hover-activated button to copy message content, with accessibility enhancements (ARIA labels).
-- **Loading Skeletons**: Displays animated placeholders during message loading.
+- **Loading Skeletons**: Displays placeholders during message loading.
 
 ### Global UX Features
 - **Mobile Responsive**: Fully responsive design using Tailwind CSS.
