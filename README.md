@@ -50,6 +50,46 @@ This is a fully functional, responsive frontend for a Gemini-style conversationa
 ### Steps
 1. **Clone the Repository**:
    ```bash
-   git clone (https://github.com/debasishbihari/ai-mimic.git)
-   cd <repository-folder>
+   git clone https://github.com/debasishbihari/ai-mimic.git
+   cd gemini-chat
+   
 2. **Install Depedencies
+   ```powershell
+   npm install
+
+3. **Run the Development Server
+   ```powershell
+   npm run dev
+
+  Open http://localhost:3000 in your browser
+
+4. **Build for Production
+   ```powershell
+   npm run build
+
+├── app/
+│   ├── chat/[id]/page.tsx       # Chatroom interface
+│   ├── dashboard/page.tsx       # Chatroom management dashboard
+│   ├── login/page.tsx           # OTP login page
+│   ├── layout.tsx               # Root layout with Toaster
+│   ├── globals.css              # Global styles
+├── components/
+│   ├── ChatInput.tsx            # Message input with image upload
+│   ├── ChatMessage.tsx          # Message display with copy-to-clipboard
+│   ├── ChatroomCard.tsx         # Chatroom card with delete
+│   ├── ChatroomForm.tsx         # Form to create chatrooms
+│   ├── ChatSkeleton.tsx         # Loading skeleton for messages
+│   ├── ThemeToggle.tsx          # Dark/light mode toggle
+├── hooks/
+│   ├── useChatMessages.ts       # Manages chat messages with pagination
+│   ├── useDebounce.ts           # Debounce hook for search
+├── lib/
+│   ├── countries.ts             # Fetches country codes
+├── store/
+│   ├── authStore.ts             # Zustand store for auth
+│   ├── chatroomStore.ts         # Zustand store for chatrooms
+│   ├── messageStore.ts          # Zustand store for messages
+├── types/
+│   ├── message.ts               # Message type definition
+├── tailwind.config.ts           # Tailwind CSS configuration
+├── README.md                    # Project documentation
