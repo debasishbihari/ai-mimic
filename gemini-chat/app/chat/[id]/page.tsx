@@ -36,7 +36,7 @@ export default function ChatPage({ params }: { params: { id: string } }) {
       setIsLoadingMore(true);
       const nextPage = page + 1;
       prevScrollHeight.current = containerRef.current.scrollHeight; // Save before loading
-      loadOlderMessages(nextPage).then(() => {
+      loadOlderMessages().then(() => {
         // Wait for DOM to update and restore scroll
         requestAnimationFrame(() => {
           if (containerRef.current) {

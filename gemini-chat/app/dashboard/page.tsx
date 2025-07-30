@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuthStore } from "@/store/authStore";
-import { useChatroomStore } from "@/store/chatroomStore";
+import { Chatroom, useChatroomStore } from "@/store/chatroomStore";
 import ChatroomForm from "@/components/ChatroomForm";
 import ChatroomCard from "@/components/ChatroomCard";
 import { useEffect, useState } from "react";
@@ -38,7 +38,7 @@ export default function DashboardPage() {
       <ChatroomForm />
 
       <div className="space-y-3">
-        {filtered.map((room) => (
+        {filtered.map((room: Chatroom) => (
           <ChatroomCard key={room.id} room={room} />
         ))}
         {filtered.length === 0 && (
