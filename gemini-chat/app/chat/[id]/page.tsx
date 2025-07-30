@@ -8,11 +8,13 @@ import TypingIndicator from "@/components/TypingIndicator";
 import ChatSkeleton from "@/components/ChatSkeleton";
 import { FC } from 'react';
 
-type ChatPageProps = {
-  params: { id: string };
+type PageProps = {
+  params: {
+    id: string;
+  };
 };
 
-const ChatPage: FC<ChatPageProps> = ({ params }) => {
+export default function ChatPage({ params }: PageProps)  {
   const {
     messages,
     sendMessage,
@@ -99,5 +101,3 @@ const ChatPage: FC<ChatPageProps> = ({ params }) => {
     </div>
   );
 }
-
-export default ChatPage;
