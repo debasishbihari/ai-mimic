@@ -9,7 +9,6 @@ This is a fully functional, responsive frontend for a Gemini-style conversationa
 - **OTP-based Login/Signup**: Users log in using a phone number with country code selection, validated via **React Hook Form** and **Zod**.
 - **Country Code Fetching**: Retrieves country dial codes from the [REST Countries API](https://restcountries.com/).
 - **Simulated OTP**: Generates a 4-digit OTP with a `setTimeout` delay, displayed via toast notifications using **Sonnar**.
-- **LocalStorage Persistence**: Stores authentication state using **Zustand** with `persist` middleware.
 
 ### Dashboard
 - **Chatroom Management**: Create and delete chatrooms with confirmation prompts and toast notifications.
