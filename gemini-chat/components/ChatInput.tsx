@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { Plus } from 'lucide-react';
 
 export default function ChatInput({ onSend }: { onSend: (text: string, image?: string) => void }) {
   const [text, setText] = useState('');
   const [image, setImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSend = () => {
     if (!text && !image) return;
@@ -21,14 +23,27 @@ export default function ChatInput({ onSend }: { onSend: (text: string, image?: s
     reader.readAsDataURL(file);
   };
 
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
+  };
+
   return (
-    <div className="flex p-4 border-t gap-2 items-center bg-white dark:bg-gray-800">
+    <div className="flex p-4 border-t gap-2 items-center w-2xl rounded-2xl bg-white dark:bg-gray-800">
+      {/* Hidden File Input */}
       <input
+        ref={fileInputRef}
         type="file"
         accept="image/*"
         onChange={handleFile}
-        className="w-1/5"
+        className="hidden"
       />
+
+      {/* Plus Icon Button */}
+      <button onClick={triggerFileInput} className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer">
+        <Plus className="text-gray-700" />
+      </button>
+
+      {/* Text Input */}
       <input
         type="text"
         className="flex-1 border rounded p-2"
@@ -37,7 +52,9 @@ export default function ChatInput({ onSend }: { onSend: (text: string, image?: s
         onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && handleSend()}
       />
-      <button onClick={handleSend} className="bg-blue-600 text-white px-4 py-2 rounded">
+
+      {/* Send Button */}
+      <button onClick={handleSend} className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">
         Send
       </button>
     </div>

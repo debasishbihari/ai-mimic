@@ -15,24 +15,32 @@ export function useChatMessages(chatId: string) {
   const { messages, addMessage, prependMessages, resetMessages } = useMessageStore();
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
   const PAGE_SIZE = 20;
 
-  const loadInitialMessages = () => {
+  const loadInitialMessages = async() => {
+    setLoading(true);
     resetMessages();
+    await new Promise((r) => setTimeout(r, 1000)); // simulate loading
     const initialPage = dummyMessages.slice(-PAGE_SIZE);
     prependMessages(initialPage);
     setPage(1);
     setHasMore(dummyMessages.length > PAGE_SIZE);
+    setLoading(false);
   };
 
-  const loadOlderMessages = () => {
-    if (!hasMore) return;
+  const loadOlderMessages = async() => {
+    if (!hasMore || loading) return;
+
+    setLoading(true);
+    await new Promise((r) => setTimeout(r, 1000)); // simulate loading
 
     const start = dummyMessages.length - PAGE_SIZE * (page + 1);
     const end = start + PAGE_SIZE;
 
     if (start < 0) {
       setHasMore(false);
+      setLoading(false);
       return;
     }
 
@@ -41,6 +49,7 @@ export function useChatMessages(chatId: string) {
 
     setPage((prev) => prev + 1);
     if (start <= 0) setHasMore(false);
+    setLoading(false);
   };
 
   const sendMessage = async (content: string, image?: string) => {
@@ -52,7 +61,7 @@ export function useChatMessages(chatId: string) {
       image,
     };
     addMessage(newMsg);
-
+  
     try {
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
@@ -70,29 +79,34 @@ export function useChatMessages(chatId: string) {
           }),
         }
       );
-
+  
       const data = await response.json();
       const aiReply =
         data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, no response';
-
-      const aiMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        sender: 'ai',
-        content: aiReply,
-        timestamp: Date.now(),
-      };
-
-      addMessage(aiMsg);
+  
+      // Simulate thinking delay (e.g., 1.5 seconds)
+      setTimeout(() => {
+        const aiMsg: Message = {
+          id: (Date.now() + 1).toString(),
+          sender: 'ai',
+          content: aiReply,
+          timestamp: Date.now(),
+        };
+        addMessage(aiMsg);
+      }, 1500);
     } catch (error) {
       console.error('Gemini API Error:', error);
-      addMessage({
-        id: (Date.now() + 2).toString(),
-        sender: 'ai',
-        content: 'Something went wrong. Please try again.',
-        timestamp: Date.now(),
-      });
+      setTimeout(() => {
+        addMessage({
+          id: (Date.now() + 2).toString(),
+          sender: 'ai',
+          content: 'Something went wrong. Please try again.',
+          timestamp: Date.now(),
+        });
+      }, 1000); 
     }
   };
+  
 
   return {
     messages,
@@ -100,5 +114,6 @@ export function useChatMessages(chatId: string) {
     loadOlderMessages,
     loadInitialMessages,
     hasMore,
+    loading
   };
 }

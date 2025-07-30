@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { useChatroomStore } from "@/store/chatroomStore";
 import { toast } from 'sonner';
+import { Trash } from "lucide-react";
 
 const ChatroomForm = () => {
   const { register, handleSubmit, reset } = useForm<{ title: string }>();
@@ -20,7 +21,7 @@ const ChatroomForm = () => {
         className="border p-2 rounded w-full"
         placeholder="New chatroom title"
       />
-      <button type="submit" className="bg-blue-600 text-white px-4 rounded">
+      <button type="submit" className="bg-blue-600 text-white px-4 rounded cursor-pointer">
         Create
       </button>
     </form>

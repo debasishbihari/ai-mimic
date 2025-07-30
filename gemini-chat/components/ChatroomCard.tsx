@@ -4,6 +4,7 @@ import { Chatroom } from '@/store/chatroomStore';
 import { toast } from 'sonner';
 import { useChatroomStore } from '@/store/chatroomStore';
 import Link from 'next/link';
+import { Trash } from 'lucide-react';
 
 export default function ChatroomCard({ room }: { room: Chatroom }) {
   const deleteChatroom = useChatroomStore((s) => s.deleteChatroom);
@@ -25,12 +26,7 @@ export default function ChatroomCard({ room }: { room: Chatroom }) {
           {new Date(room.createdAt).toLocaleString()}
         </p>
       </div>
-      <button
-        onClick={handleDelete}
-        className="text-red-600 hover:underline"
-      >
-        Delete
-      </button>
+      <Trash size={20} className="text-red-600 hover:underline cursor-pointer" onClick={handleDelete} />
     </div>
   );
 }
