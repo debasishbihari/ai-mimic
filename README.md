@@ -26,7 +26,6 @@ This is a fully functional, responsive frontend for a Gemini-style conversationa
 
 ### Global UX Features
 - **Mobile Responsive**: Fully responsive design using Tailwind CSS.
-- **Dark Mode**: Toggle between light and dark themes, persisted in `localStorage`, with custom color palette.
 - **Toast Notifications**: Feedback for actions like OTP sent, message sent, and chatroom deletion using **Sonnar**.
 - **Keyboard Accessibility**: Supports Tab navigation, Enter/Space key actions, and ARIA attributes for key components.
 - **LocalStorage**: Persists auth and chatroom data with **Zustand**.
