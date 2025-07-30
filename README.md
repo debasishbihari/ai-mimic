@@ -1,7 +1,7 @@
 # Gemini-Style Conversational AI Chat Application
 
 ## Overview
-This is a fully functional, responsive frontend for a Gemini-style conversational AI chat application built with **Next.js 15 (App Router)**, **React**, **TypeScript**, and **Tailwind CSS**. The app simulates an OTP-based login flow, chatroom management, AI messaging, image uploads, and modern UX/UI features like dark mode, toast notifications, and keyboard accessibility. It uses client-side state management with **Zustand**, form validation with **React Hook Form** and **Zod**, and simulates AI responses with throttled `setTimeout` for a realistic chat experience.
+This is a fully functional, responsive frontend for a Gemini-style conversational AI chat application built with **Next.js 15 (App Router)**, **React**, **TypeScript**, and **Tailwind CSS**. The app simulates an OTP-based login flow, chatroom management, AI messaging, image uploads, and modern UX/UI features like  toast notifications, and keyboard accessibility. It uses client-side state management with **Zustand**, form validation with **React Hook Form** and **Zod**, and simulates AI responses with `setTimeout` for a realistic chat experience.
 
 ## Features
 
