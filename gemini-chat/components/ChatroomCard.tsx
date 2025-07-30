@@ -1,7 +1,7 @@
 'use client';
 
 import { Chatroom } from '@/store/chatroomStore';
-import toast from 'react-hot-toast';
+import { toast } from 'sonner';
 import { useChatroomStore } from '@/store/chatroomStore';
 
 export default function ChatroomCard({ room }: { room: Chatroom }) {

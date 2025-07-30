@@ -6,7 +6,7 @@ import { z } from "zod";
 import { useState, useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
 import { fetchCountries } from "@/lib/countries";
-import toast from "react-hot-toast";
+import { toast } from 'sonner';
 import { useRouter } from "next/navigation";
 
 const schema = z.object({

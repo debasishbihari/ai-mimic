@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { useChatroomStore } from "@/store/chatroomStore";
-import toast from "react-hot-toast";
+import { toast } from 'sonner';
 
 const ChatroomForm = () => {
   const { register, handleSubmit, reset } = useForm<{ title: string }>();
