@@ -38,7 +38,7 @@ This is a fully functional, responsive frontend for a Gemini-style conversationa
 - **Icons**: Lucide React
 - **Notifications**: Sonner
 - **API**: REST Countries API (for country codes)
-- **Message Handling**: Simulated AI responses with `setTimeout` and throttling
+- **Message Handling**: Gemini AI responses with `setTimeout` and throttling
 - **Deployment**: Ready for Vercel or Netlify
 
 ## Installation
