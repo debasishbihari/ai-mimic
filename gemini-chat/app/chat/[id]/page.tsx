@@ -7,7 +7,13 @@ import ChatMessage from "@/components/ChatMessage";
 import TypingIndicator from "@/components/TypingIndicator";
 import ChatSkeleton from "@/components/ChatSkeleton";
 
-export default function ChatPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function ChatPage({ params }: PageProps) {
   const {
     messages,
     sendMessage,
