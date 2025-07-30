@@ -25,6 +25,17 @@ export default function ChatPage({ params }: { params: { id: string } }) {
   };
 
   useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        window.history.back();
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, []);
+  
+
+  useEffect(() => {
     const c = containerRef.current;
     c?.addEventListener('scroll', handleScroll);
     return () => c?.removeEventListener('scroll', handleScroll);
