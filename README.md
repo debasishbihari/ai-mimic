@@ -50,5 +50,6 @@ This is a fully functional, responsive frontend for a Gemini-style conversationa
 ### Steps
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
+   git clone (https://github.com/debasishbihari/ai-mimic.git)
    cd <repository-folder>
+2. **Install Depedencies
