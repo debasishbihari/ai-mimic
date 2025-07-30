@@ -6,14 +6,13 @@ import ChatInput from "@/components/ChatInput";
 import ChatMessage from "@/components/ChatMessage";
 import TypingIndicator from "@/components/TypingIndicator";
 import ChatSkeleton from "@/components/ChatSkeleton";
+import { FC } from 'react';
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+type ChatPageProps = {
+  params: { id: string };
+};
 
-export default function ChatPage({ params }: PageProps) {
+const ChatPage: FC<ChatPageProps> = ({ params }) => {
   const {
     messages,
     sendMessage,
@@ -100,3 +99,5 @@ export default function ChatPage({ params }: PageProps) {
     </div>
   );
 }
+
+export default ChatPage;
