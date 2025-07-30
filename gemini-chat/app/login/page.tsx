@@ -66,7 +66,7 @@ const LoginPage = () => {
           <form onSubmit={handleSubmit(sendOtp)} className="space-y-4">
             <select
               {...register("countryCode")}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-black"
             >
               <option value="">Select Country</option>
               {countries.map((c) => (

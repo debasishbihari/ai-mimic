@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 export const fetchCountries = async () => {
-  const response = await axios.get('https://restcountries.com/v3.1/all');
+  const response = await axios.get(
+    'https://restcountries.com/v3.1/all?fields=name,idd'
+  );
 
   return response.data
     .map((country: any) => {
@@ -14,5 +16,5 @@ export const fetchCountries = async () => {
         code,
       };
     })
-    .filter(c => c.code); // only keep countries with valid codes
+    .filter((c) => c.code);
 };
