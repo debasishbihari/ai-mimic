@@ -1,5 +1,5 @@
 "use client";
-
+import {use} from 'react';
 import { useEffect, useRef, useState } from "react";
 import { useChatMessages } from "@/hooks/useChatMessages";
 import ChatInput from "@/components/ChatInput";
@@ -15,13 +15,18 @@ type PageProps = {
 };
 
 export default function ChatPage({ params }: PageProps)  {
+  console.log(params,"params")
+  const { id } = use(params); // ✅ Correct way in new versions
+  console.log(id)
+
+
   const {
     messages,
     sendMessage,
     loadOlderMessages,
     loadInitialMessages,
     loading,
-  } = useChatMessages(params.id);
+  } = useChatMessages(id);
   const [page, setPage] = useState(0);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
